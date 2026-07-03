@@ -27,25 +27,25 @@ const momentos = [
     fecha: "29 de Junio 2026",
     titulo: "Floración",
     texto: "Una noche, en mitad del cansancio, tomamos la dura decision de que, a pesar de la distancia, queríamos estar juntos. Y así empezó todo. Realmente empezo por una conversacion dias atras sobre Molekula, pero bueno, eso es otra historia.",
-    imagen: "/lotus_flower.png"
+    imagen: "lotus_flower.png"
   },
   {
     fecha: "Entre 29 de Junio y 3 de Julio 2026 (no me acuerdo las fechas exactas)",
     titulo: "Cosas que pasamos",
     texto: "Creamos playlist con las canciones preferidad del otro y comenzamos a recomendarnos diariamente una. Te puse de apodo Venni y tu a mi Alex. Me presentaste a tu grupo de amigos de Valencia. Por los jajas te saque la localizacion con solo una foto desde tu balcón. Compartimos bibliotecas de Steam. Lograste hacerme romper algunos de mis principios, ya sabes cuales. ;]",
-    imagen: "/gato.jpg"
+    imagen: "gato.jpg"
   },
     {
     fecha: "1 de Julio 2026",
     titulo: "La carta",
     texto: "Aburrido y con ganas de hacer algo lindo, te escribí una carta y me fui junto a Guille a Almeria capital de misión secundaria hasta la oficina de correos para mandarla a tu casa. Me senti super nervioso pero feliz... Luego me quede sin bateria en el movil y Guille y yo nos perdimos, al final logramos volver a casa.",
-    imagen: "/carta.png"
+    imagen: "carta.png"
   },
   {
     fecha: "3 de Julio 2026",
     titulo: "Detallito",
     texto: "Decidi crear esta página para recordar todos los momentos que hemos vivido y viviremos juntos.",
-    imagen: "/corazon.jpg"
+    imagen: "corazon.jpg"
   },
 
   // Añade momentos copiando este formato:
