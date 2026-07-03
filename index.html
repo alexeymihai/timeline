@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patata</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Línea lateral fija con un punto por cada momento (se rellena vía JS) -->
+  <nav class="side-nav">
+    <div class="side-track" id="sideTrack">
+      <div class="side-fill" id="sideFill"></div>
+      <!-- los puntos se generan por JavaScript -->
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       PORTADA — primer "punto" de la presentación
+       ============================================================ -->
+  <section class="moment hero" data-moment>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Una pagina de recuerdos para mi amor</div>
+      <h1>Todo lo que hemos <em>vivido</em>,<br>fecha a fecha</h1>
+      <h2>(O casi todo)</h2>
+      <p>❤️ Hecho con mucho amor y locura para Zaira. ❤️</p>
+    </div>
+    <div class="scroll-hint"><span></span>scroll</div>
+  </section>
+
+  <!-- Aquí se insertan automáticamente los momentos -->
+  <div id="momentsContainer"></div>
+
+  <section class="moment closing" data-moment>
+    <div>
+      <div class="accent-dot"></div>
+      <p>Y lo que queda por escribir aquí abajo…</p>
+      <p>Angel eres un femboy</p>
+    </div>
+  </section>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>

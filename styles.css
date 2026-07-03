@@ -1,0 +1,258 @@
+/* ============================================================
+   PALETA Y VARIABLES
+   ============================================================ */
+:root{
+  --bg-0:#191221;
+  --bg-1:#241a2c;
+  --line:#3a2c42;
+  --ink:#f3e9ec;
+  --ink-soft:#b8a8b6;
+  --accent:#d9a06b;
+  --accent-soft:#8a5b6b;
+  --serif:'Cormorant Garamond', serif;
+  --sans:'Jost', sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{
+  background:var(--bg-0);
+  /* el scroll entre puntos ahora lo controla el JavaScript de más abajo
+     (efecto "rueda que gira despacio"), así que aquí lo dejamos libre */
+  scroll-snap-type:none;
+}
+
+body{
+  background:var(--bg-0);
+  color:var(--ink);
+  font-family:var(--sans);
+  overflow-x:hidden;
+}
+
+::selection{background:var(--accent);color:var(--bg-0);}
+
+/* ============================================================
+   LÍNEA LATERAL FIJA (a la izquierda)
+   Marca en qué punto de la historia estás.
+   ============================================================ */
+.side-nav{
+  position:fixed;
+  left:36px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:50;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.side-track{
+  position:relative;
+  width:2px;
+  background:var(--line);
+}
+
+.side-fill{
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  background:linear-gradient(var(--accent-soft), var(--accent));
+  height:0%;
+  transition:height 1.2s cubic-bezier(.16,1,.3,1);
+}
+
+.side-dot{
+  position:absolute;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:11px;height:11px;
+  border-radius:50%;
+  background:var(--bg-0);
+  border:2px solid var(--line);
+  cursor:pointer;
+  transition:background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.side-dot:hover{ transform:translate(-50%,-50%) scale(1.25); }
+
+.side-dot.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 0 0 5px rgba(217,160,107,0.18);
+}
+
+@media (max-width:760px){
+  .side-nav{ left:14px; }
+}
+
+/* ============================================================
+   CADA PUNTO OCUPA LA PANTALLA COMPLETA
+   ============================================================ */
+.moment{
+  height:100vh;
+  width:100%;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex;
+  align-items:center;
+  position:relative;
+  padding:0 8vw 0 110px;
+  transform-origin:50% 20%;
+  transition:transform 1.6s cubic-bezier(.16,1,.3,1), opacity 1.6s ease, filter 1.6s ease;
+}
+
+@media (max-width:760px){
+  .moment{ padding:0 7vw 0 64px; }
+}
+
+/* el punto que acabas de dejar atrás: se encoge y sube */
+.moment.is-prev{
+  transform:translateY(-9%) scale(0.82);
+  opacity:0.3;
+  filter:blur(1px);
+}
+
+.moment.is-active{
+  transform:translateY(0) scale(1);
+  opacity:1;
+  filter:blur(0);
+}
+
+/* ============================================================
+   PORTADA
+   ============================================================ */
+.hero{ justify-content:center; text-align:center; padding-left:0; }
+
+.hero-inner{ max-width:900px; margin:0 auto; }
+
+.hero-eyebrow{
+  font-family:var(--sans);
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  font-size:12px;
+  color:var(--accent);
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(2.6rem,7vw,5.5rem);
+  line-height:1.05;
+}
+
+.hero h1 em{ font-style:italic; color:var(--accent); }
+
+.hero p{
+  margin-top:24px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.3rem;
+  color:var(--ink-soft);
+}
+
+.scroll-hint{
+  position:absolute;
+  bottom:44px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  color:var(--ink-soft);
+  font-size:11px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  animation:floaty 2.4s ease-in-out infinite;
+}
+
+.scroll-hint span{ width:1px; height:36px; background:linear-gradient(var(--accent), transparent); }
+
+@keyframes floaty{
+  0%,100%{ transform:translate(-50%,0); }
+  50%{ transform:translate(-50%,8px); }
+}
+
+/* ============================================================
+   CONTENIDO DE CADA MOMENTO
+   ============================================================ */
+.moment-content{
+  display:flex;
+  align-items:center;
+  gap:64px;
+  max-width:1100px;
+}
+
+@media (max-width:900px){
+  .moment-content{ flex-direction:column; align-items:flex-start; gap:28px; }
+}
+
+.moment-text{ flex:1; min-width:0; }
+
+.moment-date{
+  font-family:var(--sans);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  font-size:12px;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+
+.moment-title{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.1;
+  margin-bottom:18px;
+}
+
+.moment-body{
+  color:var(--ink-soft);
+  font-size:1.05rem;
+  line-height:1.75;
+  max-width:46ch;
+}
+
+.moment-image{
+  flex:1;
+  min-width:0;
+  border-radius:4px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+}
+
+.moment-image img{
+  width:100%;
+  max-height:70vh;
+  object-fit:cover;
+  display:block;
+  filter:saturate(0.92);
+}
+
+/* ============================================================
+   CIERRE
+   ============================================================ */
+.closing{ justify-content:center; text-align:center; padding-left:0; }
+
+.closing .accent-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--accent);
+  margin:0 auto 28px;
+}
+
+.closing p{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.6rem;
+  color:var(--ink-soft);
+  max-width:520px;
+  margin:0 auto;
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-snap-type:none; }
+  .moment{ transition:none; }
+}
